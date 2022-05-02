@@ -5,16 +5,130 @@
 LISTO 2) Suma entre ambos.
 LISTO 3) Multiplicación entre ambas.
 LISTO 4) Multiplicación de una de ella con un escalar.
-5) Matriz transpuesta de ambas.
+LISTO 5) Matriz transpuesta de ambas.
 6) Matriz adjunta de ambas.*/
 
-int main(void) {
+int j, i; //Variables globales
+
+
+/*void Determinantes (int matrizA[3][3], int matrizB[3][3]){
 	
+}*/
+
+
+void SumaEntreMatrices (int matrizA[3][3], int matrizB[3][3]){
+	int suma[3][3];
+	
+	for (i=0; i<3; i++){
+		for (j=0; j<3; j++){
+			suma[i][j] = matrizA[i][j] + matrizB[i][j];
+		}
+	}
+	
+	printf("La matriz suma entre ambas matrices es:\n");
+	for (i = 0; i < 3; i++) {
+		for (j = 0; j < 3; j++) {
+			printf("%d\t", suma[i][j]);}
+		printf("\n");
+	}
+	
+	printf("\n\n");
+}
+
+
+void ProductoEntreMatrices (int matrizA[3][3], int matrizB[3][3]){
+	int producto[3][3], a, sumando;
+	
+	for (a = 0; a < 3; a++) {
+		for (i = 0; i < 3; i++) {
+			sumando = 0;
+			for (j = 0; j < 3; j++) {
+				sumando += matrizA[i][j] * matrizB[j][a];
+			}
+			producto[i][a] = sumando;
+		}
+	}
+	
+	printf("La matriz producto entre ambas matrices es:\n");
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			printf("%d\t", producto[i][j]);}
+		printf("\n");}
+	
+	printf ("\n\n");
+}
+	
+	
+void ProductoPorUnEscalar (int matrizA[3][3], int matrizB[3][3]){
+	char letra;
+	int escalar, producEscalar[3][3];
+	printf ("¿Que matriz desea multiplicar por un escalar? A o B? (Introduzca letra): "); scanf ("%s", &letra);
+	printf ("¿Por qué escalar desea multiplicarla?: "); scanf ("%d", &escalar);
+	
+	if (letra == 'a' || 'A'){
+		for (i = 0; i<3; i++){
+			for (j = 0; j<3; j++){
+				producEscalar [i][j] = matrizA [i][j] * escalar;
+			}
+		}
+		for (i = 0; i<3; i++){
+			for (j = 0; j<3; j++){
+				printf ("%d\t", producEscalar[i][j]);
+			}
+			printf ("\n");
+		}
+	}
+	
+	else if (letra == 'b' || 'B'){
+		for (i = 0; i<3; i++){
+			for (j = 0; j<3; j++){
+				producEscalar [i][j] = matrizB [i][j] * escalar;
+			}
+		}
+		for (i = 0; i<3; i++){
+			for (j = 0; j<3; j++){
+				printf ("%d\t", producEscalar[i][j]);
+			}
+			printf ("\n");
+		}
+	}
+	
+	printf ("\n\n");
+}
+	
+	
+void Transpuestas (int matrizA[3][3], int matrizB[3][3]){
+	
+	printf("La matriz transpuesta de A es:\n");
+	for (i = 0; i<3; i++){
+		for (j = 0; j<3; j++){
+			printf("%d\t", matrizA[j][i]);
+		}
+		printf ("\n");
+	}
+	
+	printf("\nLa matriz transpuesta de B es:\n");
+	for (i = 0; i<3; i++){
+		for (j = 0; j<3; j++){
+			printf("%d\t", matrizB[j][i]);
+		}
+		printf ("\n");
+	}
+
+	printf ("\n\n");
+}
+
+	
+/*void Adjuntas (int matrizA[3][3], int matrizB[3][3]){
+	
+}*/
+	
+
+int main(void) {
 	int matrizA[3][3];
 	int matrizB[3][3];
-	int i, j;
 	
-	//--------------------0) INTRODUCCION DE LAS MATRICES------------------------------------------------------
+	//--------------------INTRODUCCION DE LAS MATRICES------------------------------------------------------
 	
 	printf ("Matriz A:\n");
 	for (i = 0; i<3; i++){
@@ -36,87 +150,24 @@ int main(void) {
 	
 	printf ("\n\n");
 	
-	//------------------2) SUMA ENTRE AMBAS MATRICES-------------------------------------------------------
+	//----------------------Declaracion de funciones---------------------------------------------------
 	
-	int suma[3][3];
+	//Determinantes (matrizA, matrizB);
 	
-	for (i=0; i<3; i++){
-		for (j=0; j<3; j++){
-			suma[i][j] = matrizA[i][j] + matrizB[i][j];
-		}
-	}
+	SumaEntreMatrices (matrizA, matrizB);
 	
-	printf("La matriz suma entre ambas matrices es:\n");
-	for (i = 0; i < 3; i++) {
-		for (j = 0; j < 3; j++) {
-			printf("%d\t", suma[i][j]);}
-		printf("\n");
-	}
+	ProductoEntreMatrices (matrizA, matrizB);
 	
-	printf("\n\n");
+	Transpuestas (matrizA, matrizB);
 	
-	//------------------3) PRODUCTO ENTRE AMBAS MATRICES--------------------------------------------------------
+	//Adjuntas (matrizA, matrizB);
 	
-	int producto[3][3];
-	int a, sumando;
-	
-	for (a = 0; a < 3; a++) {
-		for (i = 0; i < 3; i++) {
-			sumando = 0;
-			for (j = 0; j < 3; j++) {
-				sumando += matrizA[i][j] * matrizB[j][a];
-			}
-			producto[i][a] = sumando;
-		}
-	}
-	
-	printf("La matriz producto entre ambas matrices es:\n");
-	for (int i = 0; i < 3; i++) {
-		for (int j = 0; j < 3; j++) {
-			printf("%d\t", producto[i][j]);}
-		printf("\n");}
-	
-	printf ("\n\n");
-	
-	//--------------------4) PRODUCTO EN UNA MATRIZ POR UN ESCALAR------------------------------------------------------
-	
-	char letra;
-	int escalar;
-	int producEscalar[3][3];
-	printf ("¿Que matriz desea multiplicar por un escalar? A o B? (Introduzca letra): "); scanf ("%s", &letra);
-	printf ("¿Por qué escalar desea multiplicarla?: "); scanf ("%d", &escalar);
-	
-	if (letra == 'a' || 'A'){
-		for (i = 0; i<3; i++){
-			for (j = 0; j<3; j++){
-				producEscalar [i][j] = matrizA [i][j] * escalar;
-			}
-		}
-		for (i = 0; i<3; i++){
-			for (j = 0; j<3; j++){
-				printf ("%d\t", producEscalar[i][j]);
-			}
-			printf ("\n");
-		}
-	}
+	ProductoPorUnEscalar (matrizA, matrizB);
 
-	else if (letra == 'b' || 'B'){
-		for (i = 0; i<3; i++){
-			for (j = 0; j<3; j++){
-				producEscalar [i][j] = matrizB [i][j] * escalar;
-			}
-		}
-		for (i = 0; i<3; i++){
-			for (j = 0; j<3; j++){
-				printf ("%d\t", producEscalar[i][j]);
-			}
-			printf ("\n");
-		}
-	}
 	
-	printf ("\n\n");
 	
-	//---------------------------------------------------------------------------
+	
+	//-------------------VER VALORES DE LAS MATRICES---------------------------------
 	
 	/*for (i = 0; i<3; i++){
 		for (j = 0; j<3; j++){
@@ -124,7 +175,7 @@ int main(void) {
 		}
 	printf ("\n");
 	}
-												//VER VALORES DE LAS MATRICES
+
 	printf ("\n\n");
 	
 	for (i = 0; i<3; i++){
@@ -133,11 +184,6 @@ int main(void) {
 		}
 		printf ("\n");
 	}*/
-	
-	
-	
-	
-	
 	
 	return (0);
 }
