@@ -3,10 +3,10 @@
 /*Para el Trabajo Practico en lenguaje C voy a desarrollar un programa que al introducir dos matrices 3x3 obtenga:
 1) Sus determinantes
 LISTO 2) Suma entre ambos.
-LISTO 3) Multiplicación entre ambas.
-LISTO 4) Multiplicación de una de ella con un escalar.
+LISTO 3) Multiplicaciï¿½n entre ambas.
+LISTO 4) Multiplicaciï¿½n de una de ella con un escalar.
 LISTO 5) Matriz transpuesta de ambas.
-6) Matriz adjunta de ambas.*/
+LISTO 6) Matriz adjunta de ambas.*/
 
 int j, i; //Variables globales
 
@@ -63,7 +63,7 @@ void ProductoPorUnEscalar (int matrizA[3][3], int matrizB[3][3]){
 	char letra;
 	int escalar, producEscalar[3][3];
 	printf ("¿Que matriz desea multiplicar por un escalar? A o B? (Introduzca letra): "); scanf ("%s", &letra);
-	printf ("¿Por qué escalar desea multiplicarla?: "); scanf ("%d", &escalar);
+	printf ("¿Por que escalar desea multiplicarla?: "); scanf ("%d", &escalar);
 	
 	if (letra == 'a' || 'A'){
 		for (i = 0; i<3; i++){
@@ -119,9 +119,46 @@ void Transpuestas (int matrizA[3][3], int matrizB[3][3]){
 }
 
 	
-/*void Adjuntas (int matrizA[3][3], int matrizB[3][3]){
+void Adjuntas (int matrizA[3][3], int matrizB[3][3]){
+	int matrizadA[3][3];
+	int matrizadB[3][3];
 	
-}*/
+	printf ("La matriz adjunta de A es:\n");
+	matrizadA[0][0] = (matrizA[1][1] * matrizA[2][2]) - (matrizA[2][1] * matrizA[1][2]);
+	matrizadA[0][1] = (matrizA[1][2] * matrizA[2][0]) - (matrizA[1][0] * matrizA[2][2]);
+	matrizadA[0][2] = (matrizA[1][0] * matrizA[2][1]) - (matrizA[1][1] * matrizA[2][0]);
+	matrizadA[1][0] = (matrizA[2][1] * matrizA[0][2]) - (matrizA[2][2] * matrizA[0][1]);
+	matrizadA[1][1] = (matrizA[2][2] * matrizA[0][0]) - (matrizA[2][0] * matrizA[0][2]);
+	matrizadA[1][2] = (matrizA[2][0] * matrizA[0][1]) - (matrizA[2][1] * matrizA[0][0]);
+	matrizadA[2][0] = (matrizA[0][1] * matrizA[1][2]) - (matrizA[0][2] * matrizA[1][1]);
+	matrizadA[2][1] = (matrizA[0][2] * matrizA[1][0]) - (matrizA[0][0] * matrizA[1][2]);
+	matrizadA[2][2] = (matrizA[0][0] * matrizA[1][1]) - (matrizA[0][1] * matrizA[1][0]);
+	for (i = 0; i<3; i++){
+		for (j = 0; j<3; j++){
+			printf ("%d\t", matrizadA[i][j]);
+		}
+		printf("\n");
+	}
+	
+	printf ("\nLa matriz adjunta de B es:\n");
+	matrizadB[0][0] = (matrizB[1][1] * matrizB[2][2]) - (matrizB[2][1] * matrizB[1][2]);
+	matrizadB[0][1] = (matrizB[1][2] * matrizB[2][0]) - (matrizB[1][0] * matrizB[2][2]);
+	matrizadB[0][2] = (matrizB[1][0] * matrizB[2][1]) - (matrizB[1][1] * matrizB[2][0]);
+	matrizadB[1][0] = (matrizB[2][1] * matrizB[0][2]) - (matrizB[2][2] * matrizB[0][1]);
+	matrizadB[1][1] = (matrizB[2][2] * matrizB[0][0]) - (matrizB[2][0] * matrizB[0][2]);
+	matrizadB[1][2] = (matrizB[2][0] * matrizB[0][1]) - (matrizB[2][1] * matrizB[0][0]);
+	matrizadB[2][0] = (matrizB[0][1] * matrizB[1][2]) - (matrizB[0][2] * matrizB[1][1]);
+	matrizadB[2][1] = (matrizB[0][2] * matrizB[1][0]) - (matrizB[0][0] * matrizB[1][2]);
+	matrizadB[2][2] = (matrizB[0][0] * matrizB[1][1]) - (matrizB[0][1] * matrizB[1][0]);
+	for (i = 0; i<3; i++){
+		for (j = 0; j<3; j++){
+			printf ("%d\t", matrizadB[i][j]);
+		}
+		printf("\n");
+	}
+	
+	printf("\n\n");
+}
 	
 
 int main(void) {
@@ -160,7 +197,7 @@ int main(void) {
 	
 	Transpuestas (matrizA, matrizB);
 	
-	//Adjuntas (matrizA, matrizB);
+	Adjuntas (matrizA, matrizB);
 	
 	ProductoPorUnEscalar (matrizA, matrizB);
 
