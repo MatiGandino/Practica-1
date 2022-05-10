@@ -1,19 +1,23 @@
 #include <stdio.h>
 
-/*Para el Trabajo Practico en lenguaje C voy a desarrollar un programa que al introducir dos matrices 3x3 obtenga:
-1) Sus determinantes
-LISTO 2) Suma entre ambos.
-LISTO 3) Multiplicaciï¿½n entre ambas.
-LISTO 4) Multiplicaciï¿½n de una de ella con un escalar.
-LISTO 5) Matriz transpuesta de ambas.
-LISTO 6) Matriz adjunta de ambas.*/
-
 int j, i; //Variables globales
 
 
-/*void Determinantes (int matrizA[3][3], int matrizB[3][3]){
+void Determinantes (int matrizA[3][3], int matrizB[3][3]){
+	int matrizdetA, matrizdetB;
 	
-}*/
+	matrizdetA = matrizA[0][0] * (matrizA[1][1] * matrizA[2][2] - matrizA[1][2] * matrizA[2][1])
+				- matrizA[0][1] * (matrizA[1][0] * matrizA[2][2] - matrizA[1][2] * matrizA[2][0])
+				+ matrizA[0][2] * (matrizA[1][0] * matrizA[2][1] - matrizA[1][1] * matrizA[2][0]);
+	
+	matrizdetB = matrizB[0][0] * (matrizB[1][1] * matrizB[2][2] - matrizB[1][2] * matrizB[2][1])
+				- matrizB[0][1] * (matrizB[1][0] * matrizB[2][2] - matrizB[1][2] * matrizB[2][0])
+				+ matrizB[0][2] * (matrizB[1][0] * matrizB[2][1] - matrizB[1][1] * matrizB[2][0]);
+	
+	
+	printf ("El determinante de A es: %i\nEl determinate de B es: %i\n", matrizdetA, matrizdetB);
+	printf("\n\n");
+}
 
 
 void SumaEntreMatrices (int matrizA[3][3], int matrizB[3][3]){
@@ -62,7 +66,7 @@ void ProductoEntreMatrices (int matrizA[3][3], int matrizB[3][3]){
 void ProductoPorUnEscalar (int matrizA[3][3], int matrizB[3][3]){
 	char letra;
 	int escalar, producEscalar[3][3];
-	printf ("¿Que matriz desea multiplicar por un escalar? A o B? (Introduzca letra): "); scanf ("%s", &letra);
+	printf ("¿Que matriz desea multiplicar por un escalar? ¿A o B? (Introduzca letra): "); scanf ("%s", &letra);
 	printf ("¿Por que escalar desea multiplicarla?: "); scanf ("%d", &escalar);
 	
 	if (letra == 'a' || 'A'){
@@ -185,11 +189,11 @@ int main(void) {
 		}
 	}
 	
-	printf ("\n\n");
+	printf ("\n\n\n");
 	
 	//----------------------Declaracion de funciones---------------------------------------------------
 	
-	//Determinantes (matrizA, matrizB);
+	Determinantes (matrizA, matrizB);
 	
 	SumaEntreMatrices (matrizA, matrizB);
 	
@@ -200,8 +204,6 @@ int main(void) {
 	Adjuntas (matrizA, matrizB);
 	
 	ProductoPorUnEscalar (matrizA, matrizB);
-
-	
 	
 	
 	//-------------------VER VALORES DE LAS MATRICES---------------------------------
