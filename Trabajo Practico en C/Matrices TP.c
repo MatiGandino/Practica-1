@@ -1,9 +1,10 @@
 #include <stdio.h>
+#define T 3  //tamaño de las matrices
 
 int j, i; //Variables globales
 
 
-void Determinantes (int matrizA[3][3], int matrizB[3][3]){
+void Determinantes (int matrizA[T][T], int matrizB[T][T]){
 	int matrizdetA, matrizdetB;
 	
 	matrizdetA = matrizA[0][0] * (matrizA[1][1] * matrizA[2][2] - matrizA[1][2] * matrizA[2][1])
@@ -20,18 +21,18 @@ void Determinantes (int matrizA[3][3], int matrizB[3][3]){
 }
 
 
-void SumaEntreMatrices (int matrizA[3][3], int matrizB[3][3]){
-	int suma[3][3];
+void SumaEntreMatrices (int matrizA[T][T], int matrizB[T][T]){
+	int suma[T][T];
 	
-	for (i=0; i<3; i++){
-		for (j=0; j<3; j++){
+	for (i = 0; i <= (T-1); i++){
+		for (j = 0; j <= (T-1); j++){
 			suma[i][j] = matrizA[i][j] + matrizB[i][j];
 		}
 	}
 	
 	printf("La matriz suma entre ambas matrices es:\n");
-	for (i = 0; i < 3; i++) {
-		for (j = 0; j < 3; j++) {
+	for (i = 0; i <= (T-1); i++) {
+		for (j = 0; j <= (T-1); j++) {
 			printf("%d\t", suma[i][j]);}
 		printf("\n");
 	}
@@ -40,13 +41,13 @@ void SumaEntreMatrices (int matrizA[3][3], int matrizB[3][3]){
 }
 
 
-void ProductoEntreMatrices (int matrizA[3][3], int matrizB[3][3]){
-	int producto[3][3], a, sumando;
+void ProductoEntreMatrices (int matrizA[T][T], int matrizB[T][T]){
+	int producto[T][T], a, sumando;
 	
-	for (a = 0; a < 3; a++) {
-		for (i = 0; i < 3; i++) {
+	for (a = 0; a <= (T-1); a++) {
+		for (i = 0; i < T; i++) {
 			sumando = 0;
-			for (j = 0; j < 3; j++) {
+			for (j = 0; j <= (T-1); j++) {
 				sumando += matrizA[i][j] * matrizB[j][a];
 			}
 			producto[i][a] = sumando;
@@ -54,8 +55,8 @@ void ProductoEntreMatrices (int matrizA[3][3], int matrizB[3][3]){
 	}
 	
 	printf("La matriz producto entre ambas matrices es:\n");
-	for (int i = 0; i < 3; i++) {
-		for (int j = 0; j < 3; j++) {
+	for (int i = 0; i <= (T-1); i++) {
+		for (int j = 0; j <= (T-1); j++) {
 			printf("%d\t", producto[i][j]);}
 		printf("\n");}
 	
@@ -63,20 +64,20 @@ void ProductoEntreMatrices (int matrizA[3][3], int matrizB[3][3]){
 }
 	
 	
-void ProductoPorUnEscalar (int matrizA[3][3], int matrizB[3][3]){
+void ProductoPorUnEscalar (int matrizA[T][T], int matrizB[T][T]){
 	char letra;
-	int escalar, producEscalar[3][3];
+	int escalar, producEscalar[T][T];
 	printf ("¿Que matriz desea multiplicar por un escalar? ¿A o B? (Introduzca letra): "); scanf ("%s", &letra);
 	printf ("¿Por que escalar desea multiplicarla?: "); scanf ("%d", &escalar);
 	
 	if (letra == 'a' || 'A'){
-		for (i = 0; i<3; i++){
-			for (j = 0; j<3; j++){
+		for (i = 0; i <= (T-1); i++){
+			for (j = 0; j <= (T-1); j++){
 				producEscalar [i][j] = matrizA [i][j] * escalar;
 			}
 		}
-		for (i = 0; i<3; i++){
-			for (j = 0; j<3; j++){
+		for (i = 0; i<T; i++){
+			for (j = 0; j <= (T-1); j++){
 				printf ("%d\t", producEscalar[i][j]);
 			}
 			printf ("\n");
@@ -84,13 +85,13 @@ void ProductoPorUnEscalar (int matrizA[3][3], int matrizB[3][3]){
 	}
 	
 	else if (letra == 'b' || 'B'){
-		for (i = 0; i<3; i++){
-			for (j = 0; j<3; j++){
+		for (i = 0; i <= (T-1); i++){
+			for (j = 0; j <= (T-1); j++){
 				producEscalar [i][j] = matrizB [i][j] * escalar;
 			}
 		}
-		for (i = 0; i<3; i++){
-			for (j = 0; j<3; j++){
+		for (i = 0; i <= (T-1); i++){
+			for (j = 0; j <= (T-1); j++){
 				printf ("%d\t", producEscalar[i][j]);
 			}
 			printf ("\n");
@@ -101,19 +102,19 @@ void ProductoPorUnEscalar (int matrizA[3][3], int matrizB[3][3]){
 }
 	
 	
-void Transpuestas (int matrizA[3][3], int matrizB[3][3]){
+void Transpuestas (int matrizA[T][T], int matrizB[T][T]){
 	
 	printf("La matriz transpuesta de A es:\n");
-	for (i = 0; i<3; i++){
-		for (j = 0; j<3; j++){
+	for (i = 0; i <= (T-1); i++){
+		for (j = 0; j <= (T-1); j++){
 			printf("%d\t", matrizA[j][i]);
 		}
 		printf ("\n");
 	}
 	
 	printf("\nLa matriz transpuesta de B es:\n");
-	for (i = 0; i<3; i++){
-		for (j = 0; j<3; j++){
+	for (i = 0; i <= (T-1); i++){
+		for (j = 0; j <= (T-1); j++){
 			printf("%d\t", matrizB[j][i]);
 		}
 		printf ("\n");
@@ -123,9 +124,9 @@ void Transpuestas (int matrizA[3][3], int matrizB[3][3]){
 }
 
 	
-void Adjuntas (int matrizA[3][3], int matrizB[3][3]){
-	int matrizadA[3][3];
-	int matrizadB[3][3];
+void Adjuntas (int matrizA[T][T], int matrizB[T][T]){
+	int matrizadA[T][T];
+	int matrizadB[T][T];
 	
 	printf ("La matriz adjunta de A es:\n");
 	matrizadA[0][0] = (matrizA[1][1] * matrizA[2][2]) - (matrizA[2][1] * matrizA[1][2]);
@@ -137,8 +138,8 @@ void Adjuntas (int matrizA[3][3], int matrizB[3][3]){
 	matrizadA[2][0] = (matrizA[0][1] * matrizA[1][2]) - (matrizA[0][2] * matrizA[1][1]);
 	matrizadA[2][1] = (matrizA[0][2] * matrizA[1][0]) - (matrizA[0][0] * matrizA[1][2]);
 	matrizadA[2][2] = (matrizA[0][0] * matrizA[1][1]) - (matrizA[0][1] * matrizA[1][0]);
-	for (i = 0; i<3; i++){
-		for (j = 0; j<3; j++){
+	for (i = 0; i <= (T-1); i++){
+		for (j = 0; j <= (T-1); j++){
 			printf ("%d\t", matrizadA[i][j]);
 		}
 		printf("\n");
@@ -154,8 +155,8 @@ void Adjuntas (int matrizA[3][3], int matrizB[3][3]){
 	matrizadB[2][0] = (matrizB[0][1] * matrizB[1][2]) - (matrizB[0][2] * matrizB[1][1]);
 	matrizadB[2][1] = (matrizB[0][2] * matrizB[1][0]) - (matrizB[0][0] * matrizB[1][2]);
 	matrizadB[2][2] = (matrizB[0][0] * matrizB[1][1]) - (matrizB[0][1] * matrizB[1][0]);
-	for (i = 0; i<3; i++){
-		for (j = 0; j<3; j++){
+	for (i = 0; i <= (T-1); i++){
+		for (j = 0; j <= (T-1); j++){
 			printf ("%d\t", matrizadB[i][j]);
 		}
 		printf("\n");
@@ -166,14 +167,14 @@ void Adjuntas (int matrizA[3][3], int matrizB[3][3]){
 	
 
 int main(void) {
-	int matrizA[3][3];
-	int matrizB[3][3];
+	int matrizA[T][T];
+	int matrizB[T][T];
 	
 	//--------------------INTRODUCCION DE LAS MATRICES------------------------------------------------------
 	
 	printf ("Matriz A:\n");
-	for (i = 0; i<3; i++){
-		for (j = 0; j<3; j++){
+	for (i = 0; i <= (T-1); i++){
+		for (j = 0; j <= (T-1); j++){
 			printf ("         En fila %d, digite el valor %d: ", i+1, j+1);
 			scanf ("%d", &matrizA[i][j]);
 		}
@@ -182,8 +183,8 @@ int main(void) {
 	printf ("\n\n");
 	
 	printf ("Matriz B:\n");
-	for (i = 0; i<3; i++){
-		for (j = 0; j<3; j++){
+	for (i = 0; i <= (T-1); i++){
+		for (j = 0; j <= (T-1); j++){
 			printf ("         En fila %d, digite el valor %d: ", i+1, j+1);
 			scanf ("%d", &matrizB[i][j]);
 		}
@@ -208,8 +209,8 @@ int main(void) {
 	
 	//-------------------VER VALORES DE LAS MATRICES---------------------------------
 	
-	/*for (i = 0; i<3; i++){
-		for (j = 0; j<3; j++){
+	/*for (i = 0; i<T; i++){
+		for (j = 0; j<T; j++){
 			printf ("%d\t", matrizA[i][j]);
 		}
 	printf ("\n");
@@ -217,8 +218,8 @@ int main(void) {
 
 	printf ("\n\n");
 	
-	for (i = 0; i<3; i++){
-		for (j = 0; j<3; j++){
+	for (i = 0; i<T; i++){
+		for (j = 0; j<T; j++){
 			printf ("%d\t", matrizB[i][j]);
 		}
 		printf ("\n");
