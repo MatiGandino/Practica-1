@@ -170,7 +170,7 @@ int main(void) {
 	int matrizA[T][T];
 	int matrizB[T][T];
 	
-	//--------------------INTRODUCCION DE LAS MATRICES------------------------------------------------------
+	//--------------------INTRODUCCION DE LAS MATRICES-------------------------------
 	
 	printf ("Matriz A:\n");
 	for (i = 0; i <= (T-1); i++){
@@ -192,7 +192,27 @@ int main(void) {
 	
 	printf ("\n\n\n");
 	
-	//----------------------Declaracion de funciones---------------------------------------------------
+	
+	//-------------------VER VALORES DE LAS MATRICES---------------------------------
+	
+	printf("    Matriz A:\n");
+	for (i = 0; i<T; i++){
+		for (j = 0; j<T; j++){
+		printf ("%d\t", matrizA[i][j]); }
+	printf ("\n"); }
+	
+	printf ("\n");
+	
+	printf("    Matriz B:\n");
+	for (i = 0; i<T; i++){
+		for (j = 0; j<T; j++){
+		printf ("%d\t", matrizB[i][j]); }
+	printf ("\n"); }
+	
+	printf ("\n\n");
+	
+	
+	//----------------------Declaracion de funciones---------------------------------
 	
 	Determinantes (matrizA, matrizB);
 	
@@ -207,23 +227,6 @@ int main(void) {
 	ProductoPorUnEscalar (matrizA, matrizB);
 	
 	
-	//-------------------VER VALORES DE LAS MATRICES---------------------------------
-	
-	/*for (i = 0; i<T; i++){
-		for (j = 0; j<T; j++){
-			printf ("%d\t", matrizA[i][j]);
-		}
-	printf ("\n");
-	}
-
-	printf ("\n\n");
-	
-	for (i = 0; i<T; i++){
-		for (j = 0; j<T; j++){
-			printf ("%d\t", matrizB[i][j]);
-		}
-		printf ("\n");
-	}*/
 	
 	return (0);
 }
