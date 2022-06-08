@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define T 3  //tamaño de las matrices
+#define T 3  //tamaï¿½o de las matrices
 
 int j, i; //Variables globales
 
@@ -67,8 +67,8 @@ void ProductoEntreMatrices (int matrizA[T][T], int matrizB[T][T]){
 void ProductoPorUnEscalar (int matrizA[T][T], int matrizB[T][T]){
 	char letra;
 	int escalar, producEscalar[T][T];
-	printf ("¿Que matriz desea multiplicar por un escalar? ¿A o B? (Introduzca letra): "); scanf ("%s", &letra);
-	printf ("¿Por que escalar desea multiplicarla?: "); scanf ("%d", &escalar);
+	printf ("ï¿½Que matriz desea multiplicar por un escalar? ï¿½A o B? (Introduzca letra): "); scanf ("%s", &letra);
+	printf ("ï¿½Por que escalar desea multiplicarla?: "); scanf ("%d", &escalar);
 	
 	if (letra == 'a' || 'A'){
 		for (i = 0; i <= (T-1); i++){
@@ -169,50 +169,57 @@ void Adjuntas (int matrizA[T][T], int matrizB[T][T]){
 int main(void) {
 	int matrizA[T][T];
 	int matrizB[T][T];
+	char comprobar;
 	
-	//--------------------INTRODUCCION DE LAS MATRICES-------------------------------
 	
-	printf ("Matriz A:\n");
-	for (i = 0; i <= (T-1); i++){
-		for (j = 0; j <= (T-1); j++){
-			printf ("         En fila %d, digite el valor %d: ", i+1, j+1);
-			scanf ("%d", &matrizA[i][j]);
+	//Bucle hasta confirmar valores de matrices//
+	do {
+		//--------------------INTRODUCCION DE LAS MATRICES-------------------------------
+		printf ("Matriz A:\n");
+		for (i = 0; i <= (T-1); i++){
+			for (j = 0; j <= (T-1); j++){
+				printf ("         En fila %d, digite el valor %d: ", i+1, j+1);
+				scanf ("%d", &matrizA[i][j]);
+			}
 		}
-	}
-	
-	printf ("\n\n");
-	
-	printf ("Matriz B:\n");
-	for (i = 0; i <= (T-1); i++){
-		for (j = 0; j <= (T-1); j++){
-			printf ("         En fila %d, digite el valor %d: ", i+1, j+1);
-			scanf ("%d", &matrizB[i][j]);
+		
+		printf ("\n\n");
+		
+		printf ("Matriz B:\n");
+		for (i = 0; i <= (T-1); i++){
+			for (j = 0; j <= (T-1); j++){
+				printf ("         En fila %d, digite el valor %d: ", i+1, j+1);
+				scanf ("%d", &matrizB[i][j]);
+			}
 		}
-	}
+		
+		printf ("\n\n\n");
+		
+		
+		//-------------------VER VALORES DE LAS MATRICES---------------------------------
+		printf("    Matriz A:\n");
+		for (i = 0; i<T; i++){
+			for (j = 0; j<T; j++){
+				printf ("%d\t", matrizA[i][j]); }
+			printf ("\n"); }
+		
+		printf ("\n");
+		
+		printf("    Matriz B:\n");
+		for (i = 0; i<T; i++){
+			for (j = 0; j<T; j++){
+				printf ("%d\t", matrizB[i][j]); }
+			printf ("\n"); 
+		}
+		printf ("\n\n");
+		
+		printf ("ï¿½Son esas sus matrices? (S = Si ; N = No) : ");
+		scanf ("%s", &comprobar);
+		
+		printf ("\n\n\n");
+		
+	} while(comprobar == 'N');
 	
-	printf ("\n\n\n");
-	
-	
-	//-------------------VER VALORES DE LAS MATRICES---------------------------------
-	
-	printf("    Matriz A:\n");
-	for (i = 0; i<T; i++){
-		for (j = 0; j<T; j++){
-		printf ("%d\t", matrizA[i][j]); }
-	printf ("\n"); }
-	
-	printf ("\n");
-	
-	printf("    Matriz B:\n");
-	for (i = 0; i<T; i++){
-		for (j = 0; j<T; j++){
-		printf ("%d\t", matrizB[i][j]); }
-	printf ("\n"); }
-	
-	printf ("\n\n");
-	
-	
-	//----------------------Declaracion de funciones---------------------------------
 	
 	Determinantes (matrizA, matrizB);
 	
@@ -225,7 +232,6 @@ int main(void) {
 	Adjuntas (matrizA, matrizB);
 	
 	ProductoPorUnEscalar (matrizA, matrizB);
-	
 	
 	
 	return (0);
